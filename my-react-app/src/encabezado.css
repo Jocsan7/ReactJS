@@ -1,12 +1,77 @@
-h2{
-    color: rgb(0, 0, 0);
+.encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3f4550;
+  padding: 10px 30px;
 }
-h1{
-    color: rgb(0, 0, 0);
+
+.logo img {
+  width: 80px;
 }
-.Encabezado {
-    background-color: rgb(182, 16, 16);
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
 }
-.Logo {
-    width: 100px;
+
+.menu li {
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.redes span {
+  color: white;
+  margin-left: 10px;
+  cursor: pointer;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav ul li {
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+nav ul li:hover {
+  transform: translateY(-4px);
+}
+.redes {
+  display: flex;
+  gap: 12px;
+}
+
+.redes img {
+  width: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.redes img:hover {
+  transform: scale(1.2);
+}
+.redes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.redes img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.redes img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.4);
 }

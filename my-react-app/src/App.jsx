@@ -1,69 +1,94 @@
-import Encabezado from "./Encabezado";
+import { useState } from "react";
+import Encabezado from "./encabezado";
+import Tarjeta from "./Tarjeta";
+import "./App.css";
+
+// IMÁGENES ACTUALES
+import Estrellas from "./assets/Tarjetas/Estrellas.png";
+import Krampus from "./assets/Tarjetas/Krampus.png";
+import SDV from "./assets/Tarjetas/SDV.png";
+import Seccion6 from "./assets/Tarjetas/Seccion6.png";
+import Fondo from "./assets/Tarjetas/Fondo.jpg";
 
 function App() {
-  return (
-    <div>
-      <Encabezado/>
-      <h1> 5°A EVND</h1>
-      <h2> Maestro: Ricardo Luna Santos</h2>
-      <h2>Alumno: A.Jocsan Bonilla Galindo</h2>
-      <UserComponent />
-      <ProfileComponet />
-      <FreedComponent />
 
-    </div>
-  )
-}
+  // SECCIÓN ACTIVA
+  const [seccion, setSeccion] = useState("inicio");
 
-function UserComponent() {
-  const nombre = 'A. Jocsan'; /*CONSTpara hacer una costante, que siempre su valor es el mismo*/
-  const apellidos = 'Bonilla Galindo';
-  const nombrecompleto = <h2>El nombre es: {nombre} y sus apellidos son: {apellidos}</h2>; /*mostrar el valor de una contante o variable y para eso se muestran a traves de llaves*/
-  return <h1>{nombrecompleto}</h1>;
-}
+  // CONTENIDO POR SECCIÓN
+  const contenido = {
+    inicio: [
+      { img: Estrellas, titulo: "Texto 1", texto: "Contenido de inicio 1" },
+      { img: Krampus, titulo: "Texto 2", texto: "Contenido de inicio 2" },
+      { img: SDV, titulo: "Texto 3", texto: "Contenido de inicio 3" },
+      { img: Seccion6, titulo: "Texto 4", texto: "Contenido de inicio 4" }
+    ],
 
-function ProfileComponet() { /*USER.MAP de la lista va a mapiar, user va almacenar cada elemento que encuentre TEMPORALMENTE Y AL RETORNAR*/
-  const users = [
-    { id: 1, name: 'Johana', role: 'Web Developer' },
-    { id: 2, name: 'María', role: 'Web Designer' },
-    { id: 3, name: 'Sheila', role: 'Team Leader' },
-  ]
+    acerca: [
+      { img: Estrellas, titulo: "Acerca 1", texto: "Información acerca 1" },
+      { img: Krampus, titulo: "Acerca 2", texto: "Información acerca 2" },
+      { img: SDV, titulo: "Acerca 3", texto: "Información acerca 3" },
+      { img: Seccion6, titulo: "Acerca 4", texto: "Información acerca 4" }
+    ],
+
+    productos: [
+      { img: Estrellas, titulo: "Producto 1", texto: "Descripción producto 1" },
+      { img: Krampus, titulo: "Producto 2", texto: "Descripción producto 2" },
+      { img: SDV, titulo: "Producto 3", texto: "Descripción producto 3" },
+      { img: Seccion6, titulo: "Producto 4", texto: "Descripción producto 4" }
+    ],
+
+    galeria: [
+      { img: Estrellas, titulo: "Galería 1", texto: "Imagen galería 1" },
+      { img: Krampus, titulo: "Galería 2", texto: "Imagen galería 2" },
+      { img: SDV, titulo: "Galería 3", texto: "Imagen galería 3" },
+      { img: Seccion6, titulo: "Galería 4", texto: "Imagen galería 4" }
+    ],
+
+    videos: [
+      { img: Estrellas, titulo: "Video 1", texto: "Video destacado 1" },
+      { img: Krampus, titulo: "Video 2", texto: "Video destacado 2" },
+      { img: SDV, titulo: "Video 3", texto: "Video destacado 3" },
+      { img: Seccion6, titulo: "Video 4", texto: "Video destacado 4" }
+    ],
+
+    contacto: [
+      { img: Estrellas, titulo: "Contacto 1", texto: "Forma de contacto 1" },
+      { img: Krampus, titulo: "Contacto 2", texto: "Forma de contacto 2" },
+      { img: SDV, titulo: "Contacto 3", texto: "Forma de contacto 3" },
+      { img: Seccion6, titulo: "Contacto 4", texto: "Forma de contacto 4" }
+    ],
+
+    sucursales: [
+      { img: Estrellas, titulo: "Sucursal 1", texto: "Sucursal info 1" },
+      { img: Krampus, titulo: "Sucursal 2", texto: "Sucursal info 2" },
+      { img: SDV, titulo: "Sucursal 3", texto: "Sucursal info 3" },
+      { img: Seccion6, titulo: "Sucursal 4", texto: "Sucursal info 4" }
+    ]
+  };
+
   return (
     <>
-      <p>Lista de usuarios del sistema</p>
-      <ul>
-        {
-          users.map(function (user, index) {
-            return (
-              <li key={index}>{user.name} es un {user.role}</li>
-            )
-          })
-        }
-      </ul>
-    </>
-  )
-}
+      <Encabezado setSeccion={setSeccion} />
 
-function FreedComponent() {
-  const materiales = [
-    { id: 1, nombre: 'Cemento' },
-    { id: 2, nombre: 'Varillas' },
-    { id: 3, nombre: 'Arena' },
-    { id: 4, nombre: 'Bloques' },
-    { id: 5, nombre: 'Grava'}
-  ]
-
-  return (
-    <>
-      <h1>Materiales de Construcción</h1>
-      <ul>
-        {materiales.map((material) => (
-          <li key={material.id}>{material.nombre}</li>
+      {/* TARJETAS — SIEMPRE EXISTEN */}
+      <div className="contenedor-tarjetas">
+        {contenido[seccion].map((item, index) => (
+          <Tarjeta
+            key={index}
+            imagen={item.img}
+            titulo={item.titulo}
+            texto={item.texto}
+          />
         ))}
-      </ul>
+      </div>
+
+      {/* FONDO */}
+      <div className="seccion-fondo">
+        <img src={Fondo} alt="Fondo decorativo" />
+      </div>
     </>
-  )
+  );
 }
 
-
-export default App
+export default App;
