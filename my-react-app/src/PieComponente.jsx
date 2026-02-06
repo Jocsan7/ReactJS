@@ -5,7 +5,7 @@ function PieComponente() {
         <div className="pieDiv">
             <div className="pieIzqDiv">
                 <h4>Contacto</h4>
-                <p>2024 Mi aplicación React. Todos los derechos reservados.</p>
+                <p>2026 Mi aplicación React. Todos los derechos reservados.</p>
                 <p>Correo: contacto@ejemplo.com</p>
                 <p>Tel: +52 776 123 39 82</p>
             </div>

@@ -20,13 +20,13 @@ function Encabezado({ setSeccion }) {
       {/* MENÚ */}
       <nav className="menu">
         <ul>
-          <li onMouseEnter={() => setSeccion("inicio")}>Inicio</li>
-          <li onMouseEnter={() => setSeccion("acerca")}>Acerca</li>
-          <li onMouseEnter={() => setSeccion("productos")}>Productos</li>
-          <li onMouseEnter={() => setSeccion("galeria")}>Galería</li>
-          <li onMouseEnter={() => setSeccion("videos")}>Videos</li>
-          <li onMouseEnter={() => setSeccion("contacto")}>Contacto</li>
-          <li onMouseEnter={() => setSeccion("sucursales")}>Sucursales</li>
+          <li onClick={() => setSeccion("inicio")}>Inicio</li>
+          <li onClick={() => setSeccion("acerca")}>Acerca</li>
+          <li onClick={() => setSeccion("productos")}>Productos</li>
+          <li onClick={() => setSeccion("galeria")}>Galería</li>
+          <li onClick={() => setSeccion("videos")}>Videos</li>
+          <li onClick={() => setSeccion("contacto")}>Contacto</li>
+          <li onClick={() => setSeccion("sucursales")}>Sucursales</li>
         </ul>
       </nav>
 

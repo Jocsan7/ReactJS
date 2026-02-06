@@ -19,10 +19,10 @@ function App() {
   // CONTENIDO POR SECCIÓN
   const contenido = {
     inicio: [
-      { img: Estrellas, titulo: "Texto 1", texto: "Contenido de inicio 1" },
-      { img: Krampus, titulo: "Texto 2", texto: "Contenido de inicio 2" },
-      { img: SDV, titulo: "Texto 3", texto: "Contenido de inicio 3" },
-      { img: Seccion6, titulo: "Texto 4", texto: "Contenido de inicio 4" }
+      { img: "https://ih1.redbubble.net/image.5779472775.5983/flat,750x,075,f-pad,750x1000,f8f8f8.jpg", titulo: "Texto 1", texto: "Contenido de inicio 1" },
+      { img: "https://static.wikia.nocookie.net/zenless-zone-zero/images/b/b5/Faction_Krampus_Compliance_Authority_Icon.png/revision/latest?cb=20251126110143", titulo: "Texto 2", texto: "Contenido de inicio 2" },
+      { img: "https://ih1.redbubble.net/image.5591849458.1809/flat,750x1000,075,t.jpg", titulo: "Texto 3", texto: "Contenido de inicio 3" },
+      { img: "https://ih1.redbubble.net/image.5593131857.1264/flat,750x,075,f-pad,750x1000,f8f8f8.jpg", titulo: "Texto 4", texto: "Contenido de inicio 4" }
     ],
 
     acerca: [
