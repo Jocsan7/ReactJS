@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Encabezado from "./encabezado";
 import Tarjeta from "./Tarjeta";
+import PieComponente from "./PieComponente";"./PieComponente";
 import "./App.css";
 
 // IMÁGENES ACTUALES
@@ -87,6 +88,7 @@ function App() {
       <div className="seccion-fondo">
         <img src={Fondo} alt="Fondo decorativo" />
       </div>
+      <PieComponente/>
     </>
   );
 }
