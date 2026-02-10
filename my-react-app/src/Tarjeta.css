@@ -23,6 +23,10 @@
   border-radius: 6px;
 }
 
+.contenedor-tarjetas.grid-5 .tarjeta img {
+  height: 150px;
+}
+
 /* TEXTO */
 .tarjeta h3 {
   margin-top: 15px;

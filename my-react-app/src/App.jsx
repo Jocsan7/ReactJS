@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Encabezado from "./encabezado";
 import Tarjeta from "./Tarjeta";
-import PieComponente from "./PieComponente";"./PieComponente";
+import PieComponente from "./PieComponente";
 import "./App.css";
 
 // IMÁGENES ACTUALES
@@ -20,9 +20,10 @@ function App() {
   const contenido = {
     inicio: [
       { img: "https://ih1.redbubble.net/image.5779472775.5983/flat,750x,075,f-pad,750x1000,f8f8f8.jpg", titulo: "Texto 1", texto: "Contenido de inicio 1" },
-      { img: "https://static.wikia.nocookie.net/zenless-zone-zero/images/b/b5/Faction_Krampus_Compliance_Authority_Icon.png/revision/latest?cb=20251126110143", titulo: "Texto 2", texto: "Contenido de inicio 2" },
+      { img: "https://preview.redd.it/1-6-gonna-be-my-favorite-update-v0-3lwty3jtnvee1.jpeg?auto=webp&s=f4c5c176e2d64c41c3ea707334254c1bdc6ef1ca", titulo: "Texto 2", texto: "Contenido de inicio 2" },
       { img: "https://ih1.redbubble.net/image.5591849458.1809/flat,750x1000,075,t.jpg", titulo: "Texto 3", texto: "Contenido de inicio 3" },
-      { img: "https://ih1.redbubble.net/image.5593131857.1264/flat,750x,075,f-pad,750x1000,f8f8f8.jpg", titulo: "Texto 4", texto: "Contenido de inicio 4" }
+      { img: "https://ih1.redbubble.net/image.5593131857.1264/flat,750x,075,f-pad,750x1000,f8f8f8.jpg", titulo: "Texto 4", texto: "Contenido de inicio 4" },
+      { img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZG2USYwtQoadgKUTRXwTppoGUPnYgd02U5g&s", titulo: "Texto 5", texto: "Contenido de inicio 5" }
     ],
 
     acerca: [
@@ -73,8 +74,17 @@ function App() {
       <Encabezado setSeccion={setSeccion} />
 
       {/* TARJETAS — SIEMPRE EXISTEN */}
-      <div className="contenedor-tarjetas">
-        {contenido[seccion].map((item, index) => (
+      <div
+        className={`contenedor-tarjetas ${
+          ["productos", "galeria", "videos"].includes(seccion) ? "grid-5" : ""
+        } ${
+          seccion === "sucursales" ? "grid-2" : ""
+        }`}
+      >
+        {(seccion === "productos" || seccion === "galeria" || seccion === "videos"
+          ? Array.from({ length: 12 }, (_, i) => contenido[seccion][i % contenido[seccion].length])
+          : contenido[seccion]
+        ).map((item, index) => (
           <Tarjeta
             key={index}
             imagen={item.img}
@@ -84,10 +94,12 @@ function App() {
         ))}
       </div>
 
-      {/* FONDO */}
-      <div className="seccion-fondo">
-        <img src={Fondo} alt="Fondo decorativo" />
-      </div>
+      {/* FONDO: solo en "inicio" */}
+      {seccion === "inicio" && (
+        <div className="seccion-fondo">
+          <img src={Fondo} alt="Fondo decorativo" />
+        </div>
+      )}
       <PieComponente/>
     </>
   );

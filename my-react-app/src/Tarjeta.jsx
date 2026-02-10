@@ -1,14 +1,11 @@
-import "./Tarjeta.css";
+﻿import "./Tarjeta.css";
 
-function Tarjeta({ imagen }) {
+function Tarjeta({ imagen, titulo, texto }) {
   return (
     <div className="tarjeta">
-      <img src={imagen} alt="Tarjeta" />
-      <h3>Texto 1</h3>
-      <p>
-        En este apartado se coloca el contenido del texto y las imágenes
-        representativas para la tarjeta de información.
-      </p>
+      <img src={imagen} alt={titulo} />
+      <h3>{titulo}</h3>
+      <p>{texto}</p>
       <a href="#">Leer más</a>
     </div>
   );

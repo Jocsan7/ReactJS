@@ -1,11 +1,64 @@
 .contenedor-tarjetas {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 25px;
   padding: 40px;
   background-color: #f2f2f2;
 }
 
+.contenedor-tarjetas.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(6, 220px);
+  gap: 25px;
+  column-gap: 45px;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.contenedor-tarjetas.grid-5 .tarjeta {
+  width: 100%;
+}
+
+.contenedor-tarjetas.grid-5 .tarjeta {
+  padding: 12px;
+}
+
+.contenedor-tarjetas.grid-5 .tarjeta h3 {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.contenedor-tarjetas.grid-5 .tarjeta p,
+.contenedor-tarjetas.grid-5 .tarjeta a {
+  font-size: 12px;
+}
+
+.contenedor-tarjetas.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 360px);
+  gap: 35px;
+  column-gap: 80px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.contenedor-tarjetas.grid-2 .tarjeta {
+  width: 100%;
+  padding: 26px;
+}
+
+.contenedor-tarjetas.grid-2 .tarjeta img {
+  height: 240px;
+}
+
+.contenedor-tarjetas.grid-2 .tarjeta h3 {
+  font-size: 18px;
+}
+
+.contenedor-tarjetas.grid-2 .tarjeta p {
+  font-size: 14px;
+}
 .seccion-fondo img {
   width: 100%;
   height: auto;
