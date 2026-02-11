@@ -6,5 +6,10 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #ffffff;
+  background:
+    radial-gradient(130% 95% at 50% 6%, rgba(255, 120, 245, 0) 57%, rgba(255, 99, 234, 0.95) 62%, rgba(112, 232, 255, 0.9) 64%, rgba(255, 120, 245, 0) 68%),
+    radial-gradient(60% 30% at 82% 20%, rgba(170, 210, 255, 0.25) 0%, rgba(170, 210, 255, 0) 70%),
+    radial-gradient(55% 25% at 20% 24%, rgba(150, 195, 255, 0.2) 0%, rgba(150, 195, 255, 0) 72%),
+    linear-gradient(180deg, #02040c 0%, #101c3a 38%, #17214d 56%, #241b4f 75%, #2c1653 100%);
+  background-attachment: fixed;
 }

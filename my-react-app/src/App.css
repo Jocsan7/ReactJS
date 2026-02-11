@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   gap: 25px;
   padding: 40px;
-  background-color: #f2f2f2;
+  background-color: transparent;
 }
 
 .contenedor-tarjetas.grid-5 {
@@ -36,7 +36,7 @@
 
 .contenedor-tarjetas.grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, 360px);
+  grid-template-columns: repeat(2, 540px);
   gap: 35px;
   column-gap: 80px;
   justify-content: center;
