@@ -17,13 +17,13 @@ function Encabezado({ setSeccion }) {
         <img src={LogoImg} alt="Logo" />
       </div>
 
-      {/* MENÚ */}
+      {/* MENÃš */}
       <nav className="menu">
         <ul>
           <li onClick={() => setSeccion("inicio")}>Inicio</li>
           <li onClick={() => setSeccion("acerca")}>Acerca</li>
           <li onClick={() => setSeccion("productos")}>Productos</li>
-          <li onClick={() => setSeccion("galeria")}>Galería</li>
+          <li onClick={() => setSeccion("galeria")}>GalerÃ­a</li>
           <li onClick={() => setSeccion("videos")}>Videos</li>
           <li onClick={() => setSeccion("contacto")}>Contacto</li>
           <li onClick={() => setSeccion("sucursales")}>Sucursales</li>
