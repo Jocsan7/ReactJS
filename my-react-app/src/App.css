@@ -36,28 +36,29 @@
 
 .contenedor-tarjetas.grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, 540px);
-  gap: 35px;
-  column-gap: 80px;
+  grid-template-columns: repeat(2, 420px);
+  gap: 24px;
+  column-gap: 60px;
   justify-content: center;
   align-items: stretch;
 }
 
 .contenedor-tarjetas.grid-2 .tarjeta {
   width: 100%;
-  padding: 26px;
+  padding: 16px;
 }
 
-.contenedor-tarjetas.grid-2 .tarjeta img {
-  height: 240px;
+.contenedor-tarjetas.grid-2 .tarjeta img,
+.contenedor-tarjetas.grid-2 .tarjeta .tarjeta-mapa {
+  height: 170px;
 }
 
 .contenedor-tarjetas.grid-2 .tarjeta h3 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .contenedor-tarjetas.grid-2 .tarjeta p {
-  font-size: 14px;
+  font-size: 13px;
 }
 .seccion-fondo img {
   width: 100%;
@@ -76,4 +77,31 @@
   height: 100%;
   object-fit: cover;  /* recorta sin deformar */
   object-position: center;
+}
+
+.sucursales-seccion {
+  width: 100%;
+}
+
+.ubicacion-actual-wrapper {
+  width: min(1120px, calc(100% - 80px));
+  margin: 0 auto 40px auto;
+}
+
+.ubicacion-actual-card {
+  background: rgba(12, 20, 44, 0.78);
+  border: 1px solid rgba(126, 237, 255, 0.35);
+  border-radius: 12px;
+  padding: 20px;
+  color: #eaf3ff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), 0 0 18px rgba(111, 45, 255, 0.22);
+}
+
+.ubicacion-actual-card h3 {
+  margin: 0 0 10px 0;
+}
+
+.ubicacion-actual-card p {
+  margin: 0 0 12px 0;
+  color: #bdd4ef;
 }
