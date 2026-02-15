@@ -40,6 +40,13 @@
   box-shadow: 0 0 14px rgba(143, 241, 255, 0.22);
 }
 
+.menu li.activo {
+  color: #8ff1ff;
+  border-color: rgba(143, 241, 255, 0.6);
+  background-color: rgba(143, 241, 255, 0.16);
+  box-shadow: 0 0 16px rgba(143, 241, 255, 0.3);
+}
+
 .redes {
   display: flex;
   align-items: center;

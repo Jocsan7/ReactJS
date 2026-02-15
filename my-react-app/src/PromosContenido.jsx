@@ -1,3 +1,5 @@
+import "./PromosContenido.css";
+
 function PromosContenido({ fondo }) {
   return (
     <div className="seccion-fondo">

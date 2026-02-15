@@ -1,1 +1,6 @@
-/* Estilos de Contacto (reservado para personalizacion) */
+﻿.contenedor-tarjetas.seccion-contacto .tarjeta {
+  border-color: rgba(126, 237, 255, 0.35);
+}
+
+
+

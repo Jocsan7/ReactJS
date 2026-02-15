@@ -1,1 +1,52 @@
-/* Estilos de Galeria (reservado para personalizacion) */
+﻿.contenedor-tarjetas.seccion-galeria.grid-5 {
+  grid-template-columns: repeat(4, minmax(345px, 414px));
+  row-gap: 40px;
+  column-gap: 56px;
+  align-items: stretch;
+}
+
+.contenedor-tarjetas.seccion-galeria .tarjeta {
+  border-color: rgba(126, 237, 255, 0.35);
+  border-radius: 14px;
+  padding: 0;
+  min-height: 437px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(18, 28, 56, 0.62) 0%, rgba(12, 21, 45, 0.48) 100%);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28), 0 0 14px rgba(126, 237, 255, 0.12);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.contenedor-tarjetas.seccion-galeria .tarjeta img {
+  width: 100%;
+  margin: 0;
+  height: 50%;
+  min-height: 260px;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid rgba(126, 237, 255, 0.28);
+  box-shadow: 0 0 10px rgba(126, 237, 255, 0.16);
+  object-fit: cover;
+  object-position: center;
+}
+
+.contenedor-tarjetas.seccion-galeria .tarjeta h3 {
+  margin: 18px 20px 10px 20px;
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+.contenedor-tarjetas.seccion-galeria .tarjeta p {
+  margin: 8px 20px 0 20px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contenedor-tarjetas.seccion-galeria .tarjeta a {
+  padding: 16px 20px 20px 20px;
+  font-size: 13px;
+}
+
+.contenedor-tarjetas.seccion-galeria .tarjeta:hover {
+  transform: translateY(-6px);
+  border-color: rgba(126, 237, 255, 0.5);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.34), 0 0 20px rgba(126, 237, 255, 0.2);
+}

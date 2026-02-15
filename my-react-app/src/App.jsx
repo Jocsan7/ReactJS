@@ -3,7 +3,13 @@ import Encabezado from "./encabezado";
 import ContenedorTarjeta from "./ContenedorTarjeta";
 import PromosContenido from "./PromosContenido";
 import PieComponente from "./PieComponente";
-import "./App.css";
+import "./Inicio.css";
+import "./AcercaDe.css";
+import "./Productos.css";
+import "./Galeria.css";
+import "./Videos.css";
+import "./Contacto.css";
+import "./Sucursales.css";
 import inicio from "./Inicio";
 import acerca from "./AcercaDe";
 import productos from "./Productos";
@@ -29,7 +35,7 @@ function App() {
 
   return (
     <>
-      <Encabezado setSeccion={setSeccion} />
+      <Encabezado seccionActiva={seccion} setSeccion={setSeccion} />
 
       <ContenedorTarjeta seccion={seccion} contenido={contenido} />
 

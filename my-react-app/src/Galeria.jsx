@@ -1,13 +1,64 @@
-import Estrellas from "./assets/Tarjetas/Estrellas.png";
-import Krampus from "./assets/Tarjetas/Krampus.png";
-import SDV from "./assets/Tarjetas/SDV.png";
-import Seccion6 from "./assets/Tarjetas/Seccion6.png";
-
-const galeria = [
-  { img: Estrellas, titulo: "Galería 1", texto: "Imagen galería 1" },
-  { img: Krampus, titulo: "Galería 2", texto: "Imagen galería 2" },
-  { img: SDV, titulo: "Galería 3", texto: "Imagen galería 3" },
-  { img: Seccion6, titulo: "Galería 4", texto: "Imagen galería 4" }
+﻿const galeria = [
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/124392/3ba9a74bbed3272ff0a14e861e1e8418_8660564063196114626.png",
+    titulo: "Colección de la Versión 1.0",
+    texto: "Portada oficial y arte conceptual correspondiente al lanzamiento inicial."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/125120/8f8c72a18d6d5ac4d69e8804b9caf0ed_5687962668084027848.jpg",
+    titulo: "Colección de la Versión 1.1",
+    texto: "Ilustración principal y material promocional de la actualización 1.1."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/125868/5423f9e00a1032dc9a9b8f40713c358b_8193687192825452576.jpg",
+    titulo: "Colección de la Versión 1.2",
+    texto: "Arte destacado y portada representativa de la versión 1.2."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/126635/d0e3992154d8cdd53b13d50fc3824f28_2312982559916571995.jpg",
+    titulo: "Colección de la Versión 1.3",
+    texto: "Key visual oficial y composición temática de la actualización 1.3."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/127289/95e670c6e08c4da1a76d886a7253134d_4088644788282388127.png",
+    titulo: "Colección de la Versión 1.4",
+    texto: "Portada promocional y arte conceptual asociado a la versión 1.4."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/127956/37eb5895e55d9989a8972a657c0381e5_5505824483415917655.png",
+    titulo: "Colección de la Versión 1.5",
+    texto: "Ilustración principal utilizada para presentar la versión 1.5."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/154542/dda6c356730a5db3272608a58cb549d0_8793972618287987493.png",
+    titulo: "Colección de la Versión 1.6",
+    texto: "Arte visual oficial y material representativo de la actualización 1.6."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/155470/a8773d3b65c1f7136c5c5fe8cafeed94_8349407799687386542.jpg",
+    titulo: "Colección de la Versión 1.7",
+    texto: "Portada y key art oficial correspondiente a la versión 1.7."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/156056/6f955fb46ff52b081e1a30bdc3baa212_3207861985381087286.jpg",
+    titulo: "Colección de la Versión 2.0",
+    texto: "Arte principal del salto de versión 2.0 y renovación visual."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/157510/be36c01624f6f4885b462cb00b642720_921083165983277033.jpeg",
+    titulo: "Colección de la Versión 2.1",
+    texto: "Ilustración promocional y contenido visual oficial de la versión 2.1."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/159017/3e7b8dbb841acd707e97dc9e3a4081e6_6377908569452924968.jpeg",
+    titulo: "Colección de la Versión 2.2",
+    texto: "Portada representativa y arte conceptual de la actualización 2.2."
+  },
+  {
+    img: "https://fastcdn.hoyoverse.com/content-v2/plat/159983/2a4e6d8ef915af227ee09ac950954df5_7297078790058905162.jpeg",
+    titulo: "Colección de la Versión 2.3",
+    texto: "Key visual oficial y arte promocional correspondiente a la versión 2.3."
+  }
 ];
 
 export default galeria;
