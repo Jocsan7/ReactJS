@@ -5,6 +5,7 @@ import Instagram from "./assets/redes/instagram.png";
 import Tiktok from "./assets/redes/tik-tok.png";
 import Whatsapp from "./assets/redes/whatsapp.png";
 import Youtube from "./assets/redes/youtube.png";
+import Clima from "./Clima";
 
 function Encabezado({ seccionActiva, setSeccion }) {
   return (
@@ -23,12 +24,15 @@ function Encabezado({ seccionActiva, setSeccion }) {
           <li className={seccionActiva === "sucursales" ? "activo" : ""} onClick={() => setSeccion("sucursales")}>Sucursales</li>
         </ul>
       </nav>
-      <div className="redes">
-        <img src={Facebook} alt="Facebook" />
-        <img src={Instagram} alt="Instagram" />
-        <img src={Tiktok} alt="TikTok" />
-        <img src={Whatsapp} alt="WhatsApp" />
-        <img src={Youtube} alt="YouTube" />
+      <div className="redes-clima">
+        <div className="redes">
+          <img src={Facebook} alt="Facebook" />
+          <img src={Instagram} alt="Instagram" />
+          <img src={Tiktok} alt="TikTok" />
+          <img src={Whatsapp} alt="WhatsApp" />
+          <img src={Youtube} alt="YouTube" />
+        </div>
+        <Clima />
       </div>
     </header>
   );

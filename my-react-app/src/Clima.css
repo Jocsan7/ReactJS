@@ -1,0 +1,39 @@
+.divClima {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 5px 10px;
+  border: 1px solid rgba(126, 237, 255, 0.35);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(7, 16, 36, 0.86) 0%, rgba(19, 19, 52, 0.82) 100%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 12px rgba(85, 225, 255, 0.14);
+  backdrop-filter: blur(3px);
+  color: #eaf3ff;
+  white-space: nowrap;
+  max-width: 290px;
+  overflow: hidden;
+}
+
+.divClima p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.divClima p + p {
+  margin-top: 0;
+  padding-left: 8px;
+  border-left: 1px solid rgba(126, 237, 255, 0.28);
+  color: #bdd4ef;
+  text-transform: capitalize;
+}
+
+@media (max-width: 1100px) {
+  .divClima {
+    max-width: 220px;
+  }
+}
