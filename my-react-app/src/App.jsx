@@ -1,8 +1,9 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 import Encabezado from "./encabezado";
 import ContenedorTarjeta from "./ContenedorTarjeta";
 import PromosContenido from "./PromosContenido";
 import PieComponente from "./PieComponente";
+import Productos from "./Productos";
 import "./Inicio.css";
 import "./AcercaDe.css";
 import "./Productos.css";
@@ -12,7 +13,6 @@ import "./Contacto.css";
 import "./Sucursales.css";
 import inicio from "./Inicio";
 import acerca from "./AcercaDe";
-import productos from "./Productos";
 import galeria from "./Galeria";
 import videos from "./Videos";
 import contacto from "./Contacto";
@@ -26,7 +26,6 @@ function App() {
   const contenido = {
     inicio,
     acerca,
-    productos,
     galeria,
     videos,
     contacto,
@@ -37,7 +36,11 @@ function App() {
     <>
       <Encabezado seccionActiva={seccion} setSeccion={setSeccion} />
 
-      <ContenedorTarjeta seccion={seccion} contenido={contenido} />
+      {seccion === "productos" ? (
+        <Productos />
+      ) : (
+        <ContenedorTarjeta seccion={seccion} contenido={contenido} />
+      )}
 
       {seccion === "inicio" && <PromosContenido fondo={Fondo} />}
       <PieComponente />

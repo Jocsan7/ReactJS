@@ -2,6 +2,19 @@
   border-color: rgba(126, 237, 255, 0.35);
 }
 
+.contenedor-tarjetas.seccion-productos.grid-productos {
+  width: min(1280px, calc(100% - 80px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  align-items: stretch;
+}
+
+.contenedor-tarjetas.seccion-productos.grid-productos .tarjeta {
+  width: 100%;
+}
+
 .contenedor-tarjetas.seccion-productos .tarjeta:nth-child(5) img {
   object-position: top center;
 }

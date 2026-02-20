@@ -1,4 +1,7 @@
-﻿const productos = [
+﻿import { useEffect, useState } from "react";
+import "./Productos.css";
+
+const productosData = [
   {
     img: "https://m.media-amazon.com/images/I/81r2Wws9LuL.jpg",
     titulo: "Artbook Edición Nueva Eridu",
@@ -61,4 +64,44 @@
   }
 ];
 
-export default productos;
+function Productos() {
+  const [productos, setProductos] = useState([]);
+  const [cargando, setCargando] = useState(true);
+
+  useEffect(() => {
+    const temporizador = setTimeout(() => {
+      setProductos(productosData);
+      setCargando(false);
+    }, 600);
+
+    return () => clearTimeout(temporizador);
+  }, []);
+
+  if (cargando) return <p>Cargando productos...</p>;
+  const cards = productos.map((producto, index) => (
+    <div className="tarjeta" key={`${producto.titulo}-${index}`}>
+      <img src={producto.img} alt={producto.titulo} />
+      <h3>{producto.titulo}</h3>
+      <p>{producto.texto}</p>
+      <a href="#">Leer más</a>
+    </div>
+  ));
+
+  return (
+    <section className="seccion-panel seccion-panel-productos is-visible">
+      <div className="seccion-panel-encabezado">
+        <h2>Catalógo Productos</h2>
+        <p>Colección oficial de artículos inspirados en Zenless Zone Zero</p>
+      </div>
+      <div className="panel-hud" aria-hidden="true">
+        <span className="hud-corner hud-tl" />
+        <span className="hud-corner hud-tr" />
+        <span className="hud-corner hud-bl" />
+        <span className="hud-corner hud-br" />
+      </div>
+      <div className="contenedor-tarjetas seccion-productos grid-productos">{cards}</div>
+    </section>
+  );
+}
+
+export default Productos;
