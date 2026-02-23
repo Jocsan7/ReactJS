@@ -195,6 +195,62 @@
   animation-delay: 750ms;
 }
 
+.contenedor-tarjetas.seccion-acerca .tarjeta.tarjeta-autor {
+  width: min(730px, calc(100% - 96px));
+  height: 230px;
+  min-height: 230px;
+  display: grid;
+  grid-template-columns: 41% 59%;
+  grid-template-rows: auto 1fr auto;
+  align-items: stretch;
+}
+
+.contenedor-tarjetas.seccion-acerca .tarjeta.tarjeta-autor img {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border-radius: 8px 0 0 8px;
+  object-fit: cover;
+}
+
+.contenedor-tarjetas.seccion-acerca .tarjeta.tarjeta-autor h3 {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 14px 12px 0 12px;
+}
+
+.contenedor-tarjetas.seccion-acerca .tarjeta.tarjeta-autor p {
+  grid-column: 2;
+  grid-row: 2;
+  margin: 7px 12px 0 12px;
+}
+
+.contenedor-tarjetas.seccion-acerca .tarjeta.tarjeta-autor a {
+  grid-column: 2;
+  grid-row: 3;
+  margin-top: auto;
+  padding: 8px 12px 11px 12px;
+}
+
+@media (max-width: 900px) {
+  .contenedor-tarjetas.seccion-acerca .tarjeta.tarjeta-autor {
+    width: 360px;
+    height: auto;
+    min-height: 460px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contenedor-tarjetas.seccion-acerca .tarjeta.tarjeta-autor img {
+    width: 100%;
+    height: 50%;
+    min-height: 210px;
+    border-radius: 8px 8px 0 0;
+  }
+}
+
 @keyframes acercaHeadIn {
   from {
     opacity: 0;

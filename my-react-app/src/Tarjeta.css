@@ -1,9 +1,10 @@
-﻿.tarjeta {
+.tarjeta {
   background: rgba(12, 20, 44, 0.78);
   border: 1px solid rgba(126, 237, 255, 0.35);
   border-radius: 12px;
   padding: 20px;
   width: 300px;
+  min-height: 340px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), 0 0 18px rgba(111, 45, 255, 0.22);
@@ -32,24 +33,24 @@
   display: block;
 }
 
-.contenedor-tarjetas.grid-5 .tarjeta img {
-  height: 150px;
-}
-
+.contenedor-tarjetas.grid-5 .tarjeta img,
 .contenedor-tarjetas.grid-5 .tarjeta .tarjeta-mapa {
-  height: 150px;
+  height: 170px;
 }
 
 .tarjeta h3 {
   margin-top: 15px;
+  margin-bottom: 8px;
   font-size: 16px;
   text-align: center;
   color: #fff;
 }
 
 .tarjeta p {
+  margin: 0;
   font-size: 13px;
   color: #bdd4ef;
+  line-height: 1.55;
 }
 
 .tarjeta a {
@@ -65,3 +66,10 @@
   text-decoration: underline;
 }
 
+@media (max-width: 640px) {
+  .tarjeta {
+    width: 100%;
+    min-height: 320px;
+    padding: 16px;
+  }
+}

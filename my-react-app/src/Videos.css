@@ -1,6 +1,177 @@
-﻿.contenedor-tarjetas.seccion-videos .tarjeta {
-  border-color: rgba(126, 237, 255, 0.35);
+.videos-categorias {
+  width: min(1520px, calc(100% - 80px));
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
 }
 
+.videos-categoria {
+  position: relative;
+}
 
+.videos-categoria-encabezado {
+  width: 100%;
+  text-align: center;
+  margin: 0 0 22px 0;
+}
 
+.videos-categoria-encabezado h2 {
+  margin: 0;
+  font-size: clamp(32px, 3.8vw, 46px);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  color: #f2fcff;
+  text-shadow: 0 0 8px rgba(126, 239, 255, 0.4);
+}
+
+.videos-categoria-encabezado p {
+  margin: 12px 0 0 0;
+  font-size: clamp(12px, 1.25vw, 14px);
+  letter-spacing: 0.05em;
+  color: rgba(220, 241, 255, 0.72);
+}
+
+.videos-categoria-encabezado::after {
+  content: "";
+  display: block;
+  width: min(460px, 86%);
+  height: 1px;
+  margin: 14px auto 0 auto;
+  background: linear-gradient(90deg, rgba(114, 228, 255, 0) 0%, rgba(114, 228, 255, 0.9) 50%, rgba(114, 228, 255, 0) 100%);
+  box-shadow: 0 0 10px rgba(114, 228, 255, 0.34);
+}
+
+.contenedor-tarjetas.seccion-videos.grid-5 {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  padding: 0;
+  width: 100%;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta {
+  cursor: pointer;
+  height: 100%;
+  min-height: 286px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta h3 {
+  margin: 14px 16px 8px 16px;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta p {
+  margin: 0 16px;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta a {
+  padding: 12px 16px 14px 16px;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video-media {
+  position: relative;
+  width: 100%;
+  min-height: 170px;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid rgba(126, 237, 255, 0.28);
+  box-shadow: 0 0 10px rgba(126, 237, 255, 0.16);
+  overflow: hidden;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video-thumb,
+.contenedor-tarjetas.seccion-videos .tarjeta-video-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video-thumb {
+  object-fit: cover;
+  object-position: center;
+  background-color: #0a132b;
+  opacity: 1;
+  transition: opacity 320ms ease;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video-thumb-fallback {
+  background: linear-gradient(160deg, #111c3d 0%, #0a132b 100%);
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video-play {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  color: #f7fdff;
+  background: rgba(4, 9, 23, 0.62);
+  border: 1px solid rgba(126, 237, 255, 0.45);
+  box-shadow: 0 0 20px rgba(126, 237, 255, 0.25);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video-play::before {
+  content: "";
+  margin-left: 3px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid #f7fdff;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video-iframe {
+  border: 0;
+  opacity: 0;
+  transition: opacity 320ms ease;
+  pointer-events: none;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video.is-previewing .tarjeta-video-thumb {
+  opacity: 0;
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video.is-previewing .tarjeta-video-play {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.92);
+}
+
+.contenedor-tarjetas.seccion-videos .tarjeta-video.is-previewing .tarjeta-video-iframe {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .videos-categorias {
+    width: min(980px, calc(100% - 48px));
+    gap: 30px;
+  }
+
+  .contenedor-tarjetas.seccion-videos.grid-5 {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 640px) {
+  .videos-categorias {
+    width: calc(100% - 28px);
+    gap: 24px;
+  }
+
+  .videos-categoria-encabezado h2 {
+    font-size: clamp(24px, 8vw, 30px);
+  }
+
+  .contenedor-tarjetas.seccion-videos.grid-5 {
+    grid-template-columns: 1fr;
+  }
+}

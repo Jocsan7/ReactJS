@@ -65,12 +65,19 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  justify-content: flex-end;
 }
 
 .redes-clima {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 8px;
+}
+
+.redes-clima .divClima {
+  align-self: flex-end;
 }
 
 .redes img {
@@ -83,4 +90,64 @@
 .redes img:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 1280px) {
+  .encabezado {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+  }
+
+  .menu {
+    position: static;
+    transform: none;
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .menu ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .menu li {
+    font-size: 13px;
+    padding: 7px 10px;
+  }
+}
+
+@media (max-width: 720px) {
+  .logo img {
+    width: 62px;
+  }
+
+  .redes-clima {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .redes-clima .divClima {
+    align-self: center;
+  }
+
+  .redes {
+    gap: 9px;
+  }
+
+  .redes img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .menu li {
+    font-size: 12px;
+    padding: 6px 9px;
+  }
 }

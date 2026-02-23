@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const containerStyle = {
   width: "100%",
-  height: "260px"
+  height: "clamp(210px, 33vw, 300px)"
 };
 
 function MapaGeolocalizacion() {
@@ -18,7 +18,7 @@ function MapaGeolocalizacion() {
       case 1:
         return "Ubicación bloqueada. Permite el acceso a la ubicación en tu navegador para continuar.";
       case 2:
-        return "No se pudo determinar tu ubicación (señal o red insuficiente).";
+        return "No se pudo encontrar tu ubicación (señal o red insuficiente).";
       case 3:
         return "La solicitud de ubicación tardó demasiado. Intenta nuevamente.";
       default:
@@ -98,3 +98,4 @@ function MapaGeolocalizacion() {
 }
 
 export default MapaGeolocalizacion;
+

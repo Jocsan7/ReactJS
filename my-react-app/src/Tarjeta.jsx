@@ -1,10 +1,12 @@
-﻿import "./Tarjeta.css";
+import "./Tarjeta.css";
 
-function Tarjeta({ imagen, titulo, texto, lat, lng }) {
+function Tarjeta({ imagen, titulo, texto, lat, lng, enlace = "#", textoEnlace = "Leer mas" }) {
   const tieneCoordenadas = typeof lat === "number" && typeof lng === "number";
+  const claseAutor = titulo === "Autor" ? "tarjeta-autor" : "";
+  const href = typeof enlace === "string" && enlace.trim() ? enlace : "#";
 
   return (
-    <div className="tarjeta">
+    <article className={`tarjeta ${claseAutor}`.trim()}>
       {tieneCoordenadas ? (
         <iframe
           className="tarjeta-mapa"
@@ -14,12 +16,22 @@ function Tarjeta({ imagen, titulo, texto, lat, lng }) {
           referrerPolicy="no-referrer-when-downgrade"
         />
       ) : (
-        <img src={imagen} alt={titulo} />
+        <img src={imagen} alt={titulo} loading="lazy" />
       )}
+
       <h3>{titulo}</h3>
       <p>{texto}</p>
-      <a href="#">Leer más</a>
-    </div>
+      <a
+        href={href}
+        onClick={(event) => {
+          if (href === "#") {
+            event.preventDefault();
+          }
+        }}
+      >
+        {textoEnlace}
+      </a>
+    </article>
   );
 }
 
