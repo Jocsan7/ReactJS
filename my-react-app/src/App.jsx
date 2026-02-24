@@ -30,18 +30,22 @@ function App() {
     galeria,
     videos,
     contacto,
+    usuarios: [],
     sucursales
   };
 
   return (
-    <>
+    <div className="app-shell">
       <Encabezado seccionActiva={seccion} setSeccion={setSeccion} />
 
-      <ContenedorTarjeta seccion={seccion} contenido={contenido} />
+      <main className="app-main">
+        <ContenedorTarjeta seccion={seccion} contenido={contenido} />
 
-      {seccion === "inicio" && <PromosContenido fondo={Fondo} />}
+        {seccion === "inicio" && <PromosContenido fondo={Fondo} />}
+      </main>
+
       <PieComponente />
-    </>
+    </div>
   );
 }
 

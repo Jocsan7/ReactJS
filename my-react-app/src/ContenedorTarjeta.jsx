@@ -2,6 +2,12 @@
 import Tarjeta from "./Tarjeta";
 import TarjetaVideo from "./TarjetaVideo";
 import MapaGeolocalizacion from "./MapaGeolocalizacion";
+import Facebook from "./assets/redes/facebook.png";
+import Instagram from "./assets/redes/instagram.png";
+import Tiktok from "./assets/redes/tik-tok.png";
+import Whatsapp from "./assets/redes/whatsapp.png";
+import Youtube from "./assets/redes/youtube.png";
+import Usuarios from "./Usuarios";
 import "./ContenedorTarjeta.css";
 
 function ContenedorTarjeta({ seccion, contenido }) {
@@ -29,6 +35,10 @@ function ContenedorTarjeta({ seccion, contenido }) {
     contacto: {
       titulo: "Contáctanos",
       subtitulo: "¿Tienes dudas o comentarios? Estamos aquí para ayudarte"
+    },
+    usuarios: {
+      titulo: "Usuarios",
+      subtitulo: "Lista de usuarios cargados desde Fake Store API"
     },
     sucursales: {
       titulo: "Puntos de Servicio",
@@ -211,17 +221,20 @@ function ContenedorTarjeta({ seccion, contenido }) {
             </ul>
 
             <div className="contacto-redes">
+              <a href="#" aria-label="Facebook">
+                <img src={Facebook} alt="Facebook" loading="lazy" />
+              </a>
               <a href="#" aria-label="Instagram">
-                IG
+                <img src={Instagram} alt="Instagram" loading="lazy" />
+              </a>
+              <a href="#" aria-label="TikTok">
+                <img src={Tiktok} alt="TikTok" loading="lazy" />
+              </a>
+              <a href="#" aria-label="WhatsApp">
+                <img src={Whatsapp} alt="WhatsApp" loading="lazy" />
               </a>
               <a href="#" aria-label="YouTube">
-                YT
-              </a>
-              <a href="#" aria-label="X">
-                X
-              </a>
-              <a href="#" aria-label="Facebook">
-                FB
+                <img src={Youtube} alt="YouTube" loading="lazy" />
               </a>
             </div>
 
@@ -264,6 +277,29 @@ function ContenedorTarjeta({ seccion, contenido }) {
             </article>
           ))}
         </div>
+      </section>
+    );
+  }
+
+  if (seccion === "usuarios") {
+    return (
+      <section
+        ref={panelRef}
+        className={`seccion-panel seccion-panel-${seccion} ${panelVisible ? "is-visible" : ""}`}
+      >
+        {encabezadoActual && (
+          <div className="seccion-panel-encabezado">
+            <h2>{encabezadoActual.titulo}</h2>
+            <p>{encabezadoActual.subtitulo}</p>
+          </div>
+        )}
+        <div className="panel-hud" aria-hidden="true">
+          <span className="hud-corner hud-tl" />
+          <span className="hud-corner hud-tr" />
+          <span className="hud-corner hud-bl" />
+          <span className="hud-corner hud-br" />
+        </div>
+        <Usuarios panelVisible={panelVisible} />
       </section>
     );
   }

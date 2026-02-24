@@ -13,3 +13,17 @@ body {
     linear-gradient(180deg, #02040c 0%, #101c3a 38%, #17214d 56%, #241b4f 75%, #2c1653 100%);
   background-attachment: fixed;
 }
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+}
