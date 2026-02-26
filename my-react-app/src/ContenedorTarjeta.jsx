@@ -8,6 +8,8 @@ import Tiktok from "./assets/redes/tik-tok.png";
 import Whatsapp from "./assets/redes/whatsapp.png";
 import Youtube from "./assets/redes/youtube.png";
 import Usuarios from "./Usuarios";
+import Carrito from "./Carrito";
+import Productos from "./Productos";
 import "./ContenedorTarjeta.css";
 
 function ContenedorTarjeta({ seccion, contenido }) {
@@ -22,7 +24,7 @@ function ContenedorTarjeta({ seccion, contenido }) {
     },
     productos: {
       titulo: "Tienda Oficial de Objetos",
-      subtitulo: "Colección premium de productos inspirados en el universo de Zenless"
+      subtitulo: "Productos obtenidos desde Fake Store API"
     },
     galeria: {
       titulo: "Galería Visual",
@@ -39,6 +41,10 @@ function ContenedorTarjeta({ seccion, contenido }) {
     usuarios: {
       titulo: "Usuarios",
       subtitulo: "Lista de usuarios cargados desde Fake Store API"
+    },
+    carrito: {
+      titulo: "Carrito",
+      subtitulo: "Productos del carrito obtenidos desde Fake Store API"
     },
     sucursales: {
       titulo: "Puntos de Servicio",
@@ -74,10 +80,9 @@ function ContenedorTarjeta({ seccion, contenido }) {
     return () => observer.disconnect();
   }, [seccion]);
 
-  const items =
-    seccion === "productos"
-      ? Array.from({ length: 12 }, (_, i) => contenido[seccion][i % contenido[seccion].length])
-      : contenido[seccion];
+  const datosSeccion = contenido[seccion] ?? [];
+
+  const items = datosSeccion;
 
   const clases = `contenedor-tarjetas seccion-${seccion} ${
     ["productos", "galeria"].includes(seccion) ? "grid-5" : ""
@@ -281,6 +286,29 @@ function ContenedorTarjeta({ seccion, contenido }) {
     );
   }
 
+  if (seccion === "productos") {
+    return (
+      <section
+        ref={panelRef}
+        className={`seccion-panel seccion-panel-${seccion} ${panelVisible ? "is-visible" : ""}`}
+      >
+        {encabezadoActual && (
+          <div className="seccion-panel-encabezado">
+            <h2>{encabezadoActual.titulo}</h2>
+            <p>{encabezadoActual.subtitulo}</p>
+          </div>
+        )}
+        <div className="panel-hud" aria-hidden="true">
+          <span className="hud-corner hud-tl" />
+          <span className="hud-corner hud-tr" />
+          <span className="hud-corner hud-bl" />
+          <span className="hud-corner hud-br" />
+        </div>
+        <Productos />
+      </section>
+    );
+  }
+
   if (seccion === "usuarios") {
     return (
       <section
@@ -300,6 +328,29 @@ function ContenedorTarjeta({ seccion, contenido }) {
           <span className="hud-corner hud-br" />
         </div>
         <Usuarios panelVisible={panelVisible} />
+      </section>
+    );
+  }
+
+  if (seccion === "carrito") {
+    return (
+      <section
+        ref={panelRef}
+        className={`seccion-panel seccion-panel-${seccion} ${panelVisible ? "is-visible" : ""}`}
+      >
+        {encabezadoActual && (
+          <div className="seccion-panel-encabezado">
+            <h2>{encabezadoActual.titulo}</h2>
+            <p>{encabezadoActual.subtitulo}</p>
+          </div>
+        )}
+        <div className="panel-hud" aria-hidden="true">
+          <span className="hud-corner hud-tl" />
+          <span className="hud-corner hud-tr" />
+          <span className="hud-corner hud-bl" />
+          <span className="hud-corner hud-br" />
+        </div>
+        <Carrito />
       </section>
     );
   }
