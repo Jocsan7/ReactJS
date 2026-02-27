@@ -4,7 +4,7 @@ import "./Productos.css";
 
 const PRODUCTS_API_URL = "https://fakestoreapi.com/products";
 
-function Productos() {
+function Productos({ onAgregarAlCarrito }) {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
@@ -45,6 +45,8 @@ function Productos() {
         nombre: `Producto ${index + 1}`,
         imagen: producto.image ?? "",
         tituloApi: producto.title ?? "-",
+        descripcion: producto.description ?? "",
+        precioValor: typeof producto.price === "number" ? producto.price : 0,
         precio: typeof producto.price === "number" ? `$${producto.price.toFixed(2)}` : "-"
       })),
     [productos]
@@ -86,8 +88,21 @@ function Productos() {
               <span>{item.precio}</span>
             </div>
             <div className="productos-card-acciones">
-              <button type="button" className="productos-card-btn">
-                Anadir al carrito
+              <button
+                type="button"
+                className="productos-card-btn"
+                onClick={() =>
+                  onAgregarAlCarrito?.({
+                    id: item.id,
+                    nombre: item.nombre,
+                    imagen: item.imagen,
+                    descripcion: item.descripcion,
+                    precio: item.precio,
+                    precioValor: item.precioValor
+                  })
+                }
+              >
+                Añadir al carrito
               </button>
               <button type="button" className="productos-card-btn-eliminar" aria-label="Eliminar producto">
                 <svg viewBox="0 0 24 24" aria-hidden="true">

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Usuarios.css";
+import RegistrarUsuarios from "./RegistrarUsuarios";
+import "./RegistrarUsuarios.css"
 
 const USERS_API_URL = "https://fakestoreapi.com/users";
 

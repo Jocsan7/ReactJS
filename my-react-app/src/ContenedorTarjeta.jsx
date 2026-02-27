@@ -13,6 +13,24 @@ import Productos from "./Productos";
 import "./ContenedorTarjeta.css";
 
 function ContenedorTarjeta({ seccion, contenido }) {
+  const [carritoItems, setCarritoItems] = useState([]);
+
+  const agregarAlCarrito = (producto) => {
+    if (!producto?.id) return;
+
+    setCarritoItems((prevItems) => {
+      const indexExistente = prevItems.findIndex((item) => item.id === producto.id);
+
+      if (indexExistente >= 0) {
+        return prevItems.map((item, index) =>
+          index === indexExistente ? { ...item, cantidad: item.cantidad + 1 } : item
+        );
+      }
+
+      return [...prevItems, { ...producto, cantidad: 1, fecha: new Date().toISOString() }];
+    });
+  };
+
   const encabezados = {
     inicio: {
       titulo: "Bienvenido a Nueva Eridu",
@@ -304,7 +322,7 @@ function ContenedorTarjeta({ seccion, contenido }) {
           <span className="hud-corner hud-bl" />
           <span className="hud-corner hud-br" />
         </div>
-        <Productos />
+        <Productos onAgregarAlCarrito={agregarAlCarrito} />
       </section>
     );
   }
@@ -350,7 +368,7 @@ function ContenedorTarjeta({ seccion, contenido }) {
           <span className="hud-corner hud-bl" />
           <span className="hud-corner hud-br" />
         </div>
-        <Carrito />
+        <Carrito itemsCarrito={carritoItems} />
       </section>
     );
   }

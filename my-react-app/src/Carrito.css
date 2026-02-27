@@ -1,9 +1,10 @@
 .carrito-lista {
-  width: min(980px, calc(100% - 80px));
+  width: min(1260px, calc(100% - 80px));
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(190px, 1fr));
+  align-items: stretch;
+  gap: 18px;
   opacity: 0;
   transform: translateY(24px);
 }
@@ -18,7 +19,25 @@
   background: linear-gradient(180deg, rgba(18, 28, 56, 0.62) 0%, rgba(12, 21, 45, 0.48) 100%);
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28), 0 0 14px rgba(126, 237, 255, 0.12);
   color: #e8f4ff;
-  padding: 14px 18px;
+  padding: 12px;
+}
+
+.carrito-card-imagen-wrap {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  border: 1px solid rgba(126, 237, 255, 0.24);
+  background: linear-gradient(180deg, rgba(64, 94, 134, 0.35) 0%, rgba(36, 57, 91, 0.45) 100%);
+  margin-bottom: 10px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.carrito-card-imagen {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .carrito-card-fila {
@@ -33,6 +52,31 @@
 
 .carrito-card-fila:last-child {
   border-bottom: 0;
+}
+
+.carrito-card-acciones {
+  margin-top: 10px;
+}
+
+.carrito-card-btn-eliminar {
+  width: 100%;
+  border: 1px solid rgba(255, 106, 106, 0.62);
+  border-radius: 9px;
+  background: rgba(66, 18, 24, 0.82);
+  color: #ffb4b4;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
+}
+
+.carrito-card-btn-eliminar:hover {
+  background: rgba(132, 33, 45, 0.8);
+  border-color: rgba(255, 122, 122, 0.95);
+  color: #ffd6d6;
+  box-shadow: 0 0 12px rgba(255, 84, 84, 0.4);
 }
 
 .carrito-card-fila-secundaria {
@@ -104,6 +148,11 @@
     width: min(820px, calc(100% - 34px));
   }
 
+  .carrito-lista {
+    grid-template-columns: repeat(2, minmax(190px, 1fr));
+    gap: 14px;
+  }
+
   .carrito-fab {
     top: 138px;
     right: 16px;
@@ -118,8 +167,17 @@
     width: min(560px, calc(100% - 24px));
   }
 
+  .carrito-lista {
+    grid-template-columns: repeat(1, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
   .carrito-card {
     padding: 12px 14px;
+  }
+
+  .carrito-card-imagen-wrap {
+    height: 190px;
   }
 
   .carrito-card-fila {

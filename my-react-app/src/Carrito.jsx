@@ -1,7 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
 import "./Carrito.css";
-
-const CARTS_API_URL = "https://fakestoreapi.com/carts";
 
 const formatearFecha = (valor) => {
   if (!valor) return "-";
@@ -14,70 +11,25 @@ const formatearFecha = (valor) => {
   });
 };
 
-function Carrito() {
-  const [carritos, setCarritos] = useState([]);
-  const [cargando, setCargando] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    const controller = new AbortController();
-
-    const cargarDatos = async () => {
-      try {
-        setCargando(true);
-        setError("");
-
-        const resCarritos = await fetch(CARTS_API_URL, { signal: controller.signal });
-
-        if (!resCarritos.ok) {
-          throw new Error("Error al obtener datos de Fake Store API");
-        }
-
-        const dataCarritos = await resCarritos.json();
-
-        setCarritos(Array.isArray(dataCarritos) ? dataCarritos : []);
-      } catch (err) {
-        if (err.name !== "AbortError") {
-          setError("No se pudo cargar la información del carrito.");
-        }
-      } finally {
-        setCargando(false);
-      }
-    };
-
-    cargarDatos();
-
-    return () => controller.abort();
-  }, []);
-
-  const items = useMemo(
-    () =>
-      carritos.flatMap((carrito) =>
-        (carrito.products ?? []).map((item, index) => ({
-          clave: `${carrito.id}-${item.productId}-${index}`,
-          productoLabel: `Producto ${item.productId}`,
-          cantidad: item.quantity ?? 0,
-          fecha: formatearFecha(carrito.date)
-        }))
-      ),
-    [carritos]
-  );
-
-  if (cargando) {
-    return <div className="carrito-estado">Cargando carrito...</div>;
-  }
-
-  if (error) {
-    return <div className="carrito-estado carrito-error">{error}</div>;
+function Carrito({ itemsCarrito = [] }) {
+  if (!itemsCarrito.length) {
+    return <div className="carrito-estado">Aún no hay productos en el carrito.</div>;
   }
 
   return (
     <div className="carrito-lista is-visible">
-      {items.map((item) => (
-        <article className="carrito-card" key={item.clave}>
+      {itemsCarrito.map((item) => (
+        <article className="carrito-card" key={item.id}>
+          <div className="carrito-card-imagen-wrap">
+            <img className="carrito-card-imagen" src={item.imagen} alt={item.nombre} loading="lazy" />
+          </div>
           <div className="carrito-card-fila">
             <span className="carrito-etiqueta">Nombre</span>
-            <strong>{item.productoLabel}</strong>
+            <strong>{item.nombre}</strong>
+          </div>
+          <div className="carrito-card-fila">
+            <span className="carrito-etiqueta">Precio</span>
+            <span>{item.precio}</span>
           </div>
           <div className="carrito-card-fila">
             <span className="carrito-etiqueta">Cantidad</span>
@@ -85,7 +37,16 @@ function Carrito() {
           </div>
           <div className="carrito-card-fila">
             <span className="carrito-etiqueta">Fecha</span>
-            <span>{item.fecha}</span>
+            <span>{formatearFecha(item.fecha)}</span>
+          </div>
+          <div className="carrito-card-acciones">
+            <button
+              type="button"
+              className="carrito-card-btn-eliminar"
+              aria-label={`Eliminar ${item.nombre} del carrito`}
+            >
+              Eliminar
+            </button>
           </div>
         </article>
       ))}
