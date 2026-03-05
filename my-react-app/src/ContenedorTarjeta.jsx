@@ -10,6 +10,7 @@ import Youtube from "./assets/redes/youtube.png";
 import Usuarios from "./Usuarios";
 import Carrito from "./Carrito";
 import Productos from "./Productos";
+import Login from "./Login";
 import "./ContenedorTarjeta.css";
 
 function ContenedorTarjeta({ seccion, contenido }) {
@@ -42,7 +43,7 @@ function ContenedorTarjeta({ seccion, contenido }) {
     },
     productos: {
       titulo: "Tienda Oficial de Objetos",
-      subtitulo: "Productos obtenidos desde Fake Store API"
+      subtitulo: "Productos oficiales de la tienda"
     },
     galeria: {
       titulo: "Galería Visual",
@@ -58,11 +59,15 @@ function ContenedorTarjeta({ seccion, contenido }) {
     },
     usuarios: {
       titulo: "Usuarios",
-      subtitulo: "Lista de usuarios cargados desde Fake Store API"
+      subtitulo: "Lista de usuarios"
+    },
+    login: {
+      titulo: "Login",
+      subtitulo: "Accede a tu cuenta o crea una nueva"
     },
     carrito: {
       titulo: "Carrito",
-      subtitulo: "Productos del carrito obtenidos desde Fake Store API"
+      subtitulo: "Productos del carrito"
     },
     sucursales: {
       titulo: "Puntos de Servicio",
@@ -346,6 +351,29 @@ function ContenedorTarjeta({ seccion, contenido }) {
           <span className="hud-corner hud-br" />
         </div>
         <Usuarios panelVisible={panelVisible} />
+      </section>
+    );
+  }
+
+  if (seccion === "login") {
+    return (
+      <section
+        ref={panelRef}
+        className={`seccion-panel seccion-panel-${seccion} ${panelVisible ? "is-visible" : ""}`}
+      >
+        {encabezadoActual && (
+          <div className="seccion-panel-encabezado">
+            <h2>{encabezadoActual.titulo}</h2>
+            <p>{encabezadoActual.subtitulo}</p>
+          </div>
+        )}
+        <div className="panel-hud" aria-hidden="true">
+          <span className="hud-corner hud-tl" />
+          <span className="hud-corner hud-tr" />
+          <span className="hud-corner hud-bl" />
+          <span className="hud-corner hud-br" />
+        </div>
+        <Login />
       </section>
     );
   }

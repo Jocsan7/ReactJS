@@ -21,8 +21,9 @@ function Encabezado({ seccionActiva, setSeccion }) {
           <li className={seccionActiva === "galeria" ? "activo" : ""} onClick={() => setSeccion("galeria")}>Galería</li>
           <li className={seccionActiva === "videos" ? "activo" : ""} onClick={() => setSeccion("videos")}>Vídeos</li>
           <li className={seccionActiva === "contacto" ? "activo" : ""} onClick={() => setSeccion("contacto")}>Contacto</li>
-          <li className={seccionActiva === "usuarios" ? "activo" : ""} onClick={() => setSeccion("usuarios")}>Usuarios</li>
           <li className={seccionActiva === "sucursales" ? "activo" : ""} onClick={() => setSeccion("sucursales")}>Sucursales</li>
+          <li className={seccionActiva === "usuarios" ? "activo" : ""} onClick={() => setSeccion("usuarios")}>Usuarios</li>
+          <li className={seccionActiva === "login" ? "activo" : ""} onClick={() => setSeccion("login")}>Login</li>
         </ul>
       </nav>
       <div className="redes-clima">

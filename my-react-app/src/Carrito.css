@@ -131,6 +131,13 @@
   fill: currentColor;
 }
 
+.carrito-fab-cerrar {
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
 .carrito-fab:hover {
   transform: translateY(-2px);
   border-color: rgba(143, 241, 255, 1);
@@ -138,8 +145,15 @@
 }
 
 .carrito-fab.activo {
-  border-color: rgba(143, 241, 255, 1);
-  box-shadow: 0 0 20px rgba(143, 241, 255, 0.55), 0 12px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 135, 135, 0.95);
+  background: radial-gradient(circle at 30% 20%, rgba(255, 170, 170, 0.4) 0%, rgba(88, 16, 24, 0.96) 70%);
+  color: #ffe7e7;
+  box-shadow: 0 0 20px rgba(255, 120, 120, 0.42), 0 12px 24px rgba(0, 0, 0, 0.4);
+}
+
+.carrito-fab.activo:hover {
+  border-color: rgba(255, 176, 176, 1);
+  box-shadow: 0 0 24px rgba(255, 120, 120, 0.52), 0 12px 24px rgba(0, 0, 0, 0.42);
 }
 
 @media (max-width: 980px) {
