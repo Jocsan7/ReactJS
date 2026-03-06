@@ -62,6 +62,7 @@ function App() {
 
   return (
     <div className="app-shell">
+      <AuthProvider>
       <Encabezado seccionActiva={seccion} setSeccion={cambiarSeccion} />
 
       <main className="app-main">
@@ -90,6 +91,7 @@ function App() {
       </button>
 
       <PieComponente />
+      </AuthProvider>
     </div>
   );
 }

@@ -27,6 +27,7 @@ function Login() {
         throw new Error("Token no recibido");
       }
 
+      console.log("Token recibido:", tokenRecibido);
       localStorage.setItem("authToken", tokenRecibido);
       localStorage.setItem("authUser", usuario);
       setToken(tokenRecibido);

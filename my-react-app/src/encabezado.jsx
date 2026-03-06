@@ -8,6 +8,7 @@ import Youtube from "./assets/redes/youtube.png";
 import Clima from "./Clima";
 
 function Encabezado({ seccionActiva, setSeccion }) {
+  const { isLoggingIn, user } = useContext(AuthContext);
   return (
     <header className="encabezado">
       <div className="logo">
@@ -22,8 +23,16 @@ function Encabezado({ seccionActiva, setSeccion }) {
           <li className={seccionActiva === "videos" ? "activo" : ""} onClick={() => setSeccion("videos")}>Vídeos</li>
           <li className={seccionActiva === "contacto" ? "activo" : ""} onClick={() => setSeccion("contacto")}>Contacto</li>
           <li className={seccionActiva === "sucursales" ? "activo" : ""} onClick={() => setSeccion("sucursales")}>Sucursales</li>
+          {isLoggingIn ? (
+            <>
           <li className={seccionActiva === "usuarios" ? "activo" : ""} onClick={() => setSeccion("usuarios")}>Usuarios</li>
+          <li>Cerrar Sesión</li>
+          </>)
+          (
+            <li onclick={}></li>
+          )
           <li className={seccionActiva === "login" ? "activo" : ""} onClick={() => setSeccion("login")}>Login</li>
+          <li>Cerrar Sesión</li>
         </ul>
       </nav>
       <div className="redes-clima">

@@ -1,10 +1,12 @@
 .usuarios-tabla-wrap {
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto 28px;
-  border-radius: 14px;
-  border: 1px solid #e8eaf2;
-  background: #ffffff;
-  box-shadow: 0 12px 30px rgba(41, 34, 90, 0.08);
+  border-radius: 24px;
+  border: 1px solid rgba(126, 237, 255, 0.28);
+  background:
+    radial-gradient(circle at top, rgba(122, 234, 255, 0.1) 0%, rgba(122, 234, 255, 0) 24%),
+    linear-gradient(180deg, rgba(16, 28, 54, 0.9) 0%, rgba(9, 17, 36, 0.94) 100%);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34), 0 0 22px rgba(126, 237, 255, 0.12);
   overflow: hidden;
   opacity: 0;
   transform: translateY(24px);
@@ -16,38 +18,45 @@
 
 .usuarios-titulo {
   margin: 0;
-  padding: 18px 18px 12px;
+  padding: 24px 22px 16px;
   text-align: center;
   font-size: 34px;
-  color: #f0f2f8;
+  color: #eef8ff;
   background: transparent;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 .usuarios-tabla-scroll {
   overflow-x: auto;
+  padding: 0 18px 20px;
 }
 
 .usuarios-tabla {
   width: 100%;
   min-width: 900px;
-  border-collapse: collapse;
-  color: #3a3f53;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: #dfeeff;
+  border: 1px solid rgba(126, 237, 255, 0.16);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .usuarios-tabla thead th {
   position: sticky;
   top: 0;
   z-index: 1;
-  background: #f7f8fc;
-  color: #525b75;
+  background: rgba(84, 172, 217, 0.16);
+  color: #eef8ff;
   font-size: 13px;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.04em;
 }
 
 .usuarios-tabla th,
 .usuarios-tabla td {
-  border-bottom: 1px solid #edf0f8;
+  border-bottom: 1px solid rgba(126, 237, 255, 0.1);
   padding: 12px 10px;
   text-align: left;
   white-space: normal;
@@ -56,15 +65,15 @@
 }
 
 .usuarios-tabla tbody tr:nth-child(odd) {
-  background: #fcfdff;
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .usuarios-tabla tbody tr:hover {
-  background: #f4f7ff;
+  background: rgba(126, 237, 255, 0.08);
 }
 
 .usuarios-tabla tbody tr.fila-seleccionada {
-  background: #eef3ff;
+  background: rgba(126, 237, 255, 0.14);
 }
 
 .usuarios-acciones {
@@ -76,37 +85,41 @@
 
 .accion-btn {
   min-width: 72px;
-  height: 30px;
-  border: none;
-  border-radius: 7px;
-  color: #ffffff;
+  height: 32px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding: 0 10px;
+  padding: 0 12px;
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  transition: filter 180ms ease, transform 180ms ease;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  transition: filter 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
 .editar-btn {
-  background: #d4c974;
+  background: linear-gradient(90deg, #6ce6ff 0%, #4fc3ff 100%);
+  color: #0c1830;
 }
 
 .borrar-btn {
-  background: #e46c83;
+  background: rgba(255, 96, 122, 0.16);
+  border-color: rgba(255, 122, 145, 0.28);
+  color: #ffd9e1;
 }
 
 .editar-btn:hover {
-  filter: brightness(0.96);
-  transform: translateY(-1px);
+  filter: brightness(1.04);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(79, 195, 255, 0.24);
 }
 
 .borrar-btn:hover {
-  filter: brightness(0.96);
-  transform: translateY(-1px);
+  filter: brightness(1.04);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 18px rgba(255, 122, 145, 0.18);
 }
 
 .usuarios-estado {
@@ -115,15 +128,18 @@
   padding: 24px;
   text-align: center;
   font-size: 16px;
-  border-radius: 14px;
-  border: 1px solid #e8eaf2;
-  background: #ffffff;
-  color: #4a5169;
+  border-radius: 24px;
+  border: 1px solid rgba(126, 237, 255, 0.28);
+  background:
+    radial-gradient(circle at top, rgba(122, 234, 255, 0.1) 0%, rgba(122, 234, 255, 0) 24%),
+    linear-gradient(180deg, rgba(16, 28, 54, 0.9) 0%, rgba(9, 17, 36, 0.94) 100%);
+  color: #dfeeff;
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34), 0 0 22px rgba(126, 237, 255, 0.12);
 }
 
 .usuarios-error {
-  border-color: #f3c0c9;
-  color: #b6415d;
+  border-color: rgba(255, 122, 145, 0.28);
+  color: #ffd9e1;
 }
 
 @media (max-width: 980px) {
@@ -139,6 +155,7 @@
 @media (max-width: 640px) {
   .usuarios-tabla-wrap {
     width: min(100%, calc(100% - 12px));
+    border-radius: 20px;
   }
 
   .usuarios-tabla th,
@@ -150,10 +167,15 @@
   .usuarios-estado {
     width: min(100%, calc(100% - 12px));
     font-size: 14px;
+    border-radius: 20px;
   }
 
   .usuarios-titulo {
-    font-size: 26px;
-    padding: 14px 12px 10px;
+    font-size: 28px;
+    padding: 18px 14px 12px;
+  }
+
+  .usuarios-tabla-scroll {
+    padding: 0 10px 14px;
   }
 }
