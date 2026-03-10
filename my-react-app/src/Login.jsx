@@ -1,8 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import api from "./api";
 import "./Login.css";
+import { useAuth } from "./AuthContext";
 
-function Login() {
+function Login({ onLoginSuccess }) {
+  const { login } = useAuth();
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -28,12 +30,15 @@ function Login() {
       }
 
       console.log("Token recibido:", tokenRecibido);
-      localStorage.setItem("authToken", tokenRecibido);
+      login(tokenRecibido);
       localStorage.setItem("authUser", usuario);
+      setError("");
       setToken(tokenRecibido);
+      alert("Autenticacion autorizada");
+      onLoginSuccess?.();
     } catch (errorActual) {
       console.error("Error en login:", errorActual);
-      localStorage.removeItem("authToken");
+      localStorage.removeItem("token");
       localStorage.removeItem("authUser");
       setError("Usuario o contrasena incorrectos");
     } finally {
@@ -78,8 +83,11 @@ function Login() {
             />
           </div>
 
-          {error ? <p className="login-mensaje login-mensaje-error">{error}</p> : null}
-          {token ? <p className="login-mensaje login-mensaje-exito">Acceso a cuenta exitoso.</p> : null}
+          {token ? (
+            <p className="login-mensaje login-mensaje-exito">Acceso a cuenta exitoso.</p>
+          ) : error ? (
+            <p className="login-mensaje login-mensaje-error">{error}</p>
+          ) : null}
 
           <button type="submit" className="login-btn" disabled={cargando}>
             {cargando ? "Accediendo..." : "Acceder"}

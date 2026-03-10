@@ -11,10 +11,18 @@ import Usuarios from "./Usuarios";
 import Carrito from "./Carrito";
 import Productos from "./Productos";
 import Login from "./Login";
+import { useAuth } from "./AuthContext";
 import "./ContenedorTarjeta.css";
 
-function ContenedorTarjeta({ seccion, contenido }) {
+function ContenedorTarjeta({ seccion, contenido, setSeccion }) {
   const [carritoItems, setCarritoItems] = useState([]);
+  const { isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    if (isLoggedIn && seccion === "login") {
+      setSeccion("inicio");
+    }
+  }, [isLoggedIn, seccion, setSeccion]);
 
   const agregarAlCarrito = (producto) => {
     if (!producto?.id) return;
@@ -327,12 +335,36 @@ function ContenedorTarjeta({ seccion, contenido }) {
           <span className="hud-corner hud-bl" />
           <span className="hud-corner hud-br" />
         </div>
-        <Productos onAgregarAlCarrito={agregarAlCarrito} />
+        <Productos
+          onAgregarAlCarrito={agregarAlCarrito}
+          onSolicitarLogin={() => setSeccion("login")}
+        />
       </section>
     );
   }
 
   if (seccion === "usuarios") {
+    if (!isLoggedIn) {
+      return (
+        <section
+          ref={panelRef}
+          className={`seccion-panel seccion-panel-login ${panelVisible ? "is-visible" : ""}`}
+        >
+          <div className="seccion-panel-encabezado">
+            <h2>Acceso requerido</h2>
+            <p>Inicia sesion para ver la lista de usuarios.</p>
+          </div>
+          <div className="panel-hud" aria-hidden="true">
+            <span className="hud-corner hud-tl" />
+            <span className="hud-corner hud-tr" />
+            <span className="hud-corner hud-bl" />
+            <span className="hud-corner hud-br" />
+          </div>
+          <Login onLoginSuccess={() => setSeccion("inicio")} />
+        </section>
+      );
+    }
+
     return (
       <section
         ref={panelRef}
@@ -350,7 +382,7 @@ function ContenedorTarjeta({ seccion, contenido }) {
           <span className="hud-corner hud-bl" />
           <span className="hud-corner hud-br" />
         </div>
-        <Usuarios panelVisible={panelVisible} />
+        <Usuarios panelVisible={panelVisible} onRegistroExitoso={() => setSeccion("inicio")} />
       </section>
     );
   }
@@ -373,12 +405,41 @@ function ContenedorTarjeta({ seccion, contenido }) {
           <span className="hud-corner hud-bl" />
           <span className="hud-corner hud-br" />
         </div>
-        <Login />
+        <Login onLoginSuccess={() => setSeccion("inicio")} />
       </section>
     );
   }
 
   if (seccion === "carrito") {
+    if (!isLoggedIn) {
+      return (
+        <section
+          ref={panelRef}
+          className={`seccion-panel seccion-panel-login ${panelVisible ? "is-visible" : ""}`}
+        >
+          <div className="seccion-panel-encabezado">
+            <h2>Acceso requerido</h2>
+            <p>Inicia sesion para usar el carrito de compras.</p>
+          </div>
+          <div className="panel-hud" aria-hidden="true">
+            <span className="hud-corner hud-tl" />
+            <span className="hud-corner hud-tr" />
+            <span className="hud-corner hud-bl" />
+            <span className="hud-corner hud-br" />
+          </div>
+          <div className="productos-login-wrap">
+            <article className="productos-login-card">
+              <h3>Tu carrito te espera</h3>
+              <p>Inicia sesion para guardar y administrar tus productos.</p>
+              <button type="button" className="productos-login-btn" onClick={() => setSeccion("login")}>
+                Ir a Login
+              </button>
+            </article>
+          </div>
+        </section>
+      );
+    }
+
     return (
       <section
         ref={panelRef}

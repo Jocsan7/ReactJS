@@ -1,14 +1,23 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import RegistrarProductos from "./RegistrarProductos";
+import { useAuth } from "./AuthContext";
 import "./Productos.css";
 
 const PRODUCTS_API_URL = "https://fakestoreapi.com/products";
 
-function Productos({ onAgregarAlCarrito }) {
+function Productos({ onAgregarAlCarrito, onSolicitarLogin }) {
+  const { isLoggedIn } = useAuth();
+  const loginPromptRef = useRef(null);
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
   const [productoEditado, setProductoEditado] = useState(null);
+  const [mostrarLoginPrompt, setMostrarLoginPrompt] = useState(false);
+
+  useEffect(() => {
+    if (!mostrarLoginPrompt) return;
+    loginPromptRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [mostrarLoginPrompt]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -91,12 +100,26 @@ function Productos({ onAgregarAlCarrito }) {
 
   return (
     <>
-      <RegistrarProductos
-        productoEditado={productoEditado}
-        limpiarSeleccion={() => setProductoEditado(null)}
-        onRegistroExitoso={agregarProductoLocal}
-        onActualizacionExitosa={actualizarProductoLocal}
-      />
+      {isLoggedIn ? (
+        <RegistrarProductos
+          productoEditado={productoEditado}
+          limpiarSeleccion={() => setProductoEditado(null)}
+          onRegistroExitoso={agregarProductoLocal}
+          onActualizacionExitosa={actualizarProductoLocal}
+        />
+      ) : null}
+
+      {!isLoggedIn && mostrarLoginPrompt ? (
+        <div className="productos-login-wrap" ref={loginPromptRef}>
+          <article className="productos-login-card">
+            <h3>Inicia sesion para usar el carrito</h3>
+            <p>Asi podras guardar tus productos y continuar tu compra.</p>
+            <button type="button" className="productos-login-btn" onClick={onSolicitarLogin}>
+              Ir a Login
+            </button>
+          </article>
+        </div>
+      ) : null}
 
       {cargando ? (
         <div className="productos-estado">Cargando productos...</div>
@@ -125,7 +148,11 @@ function Productos({ onAgregarAlCarrito }) {
                 <button
                   type="button"
                   className="productos-card-btn"
-                  onClick={() =>
+                  onClick={() => {
+                    if (!isLoggedIn) {
+                      setMostrarLoginPrompt(true);
+                      return;
+                    }
                     onAgregarAlCarrito?.({
                       id: item.id,
                       nombre: item.nombre,
@@ -133,28 +160,32 @@ function Productos({ onAgregarAlCarrito }) {
                       descripcion: item.descripcion,
                       precio: item.precio,
                       precioValor: item.precioValor,
-                    })
-                  }
+                    });
+                  }}
                 >
-                  Anadir al carrito
+                  {isLoggedIn ? "Anadir al carrito" : "Iniciar sesion"}
                 </button>
-                <button
-                  type="button"
-                  className="productos-card-btn-editar"
-                  onClick={() => iniciarEdicion(item.raw)}
-                >
-                  Editar
-                </button>
-                <button
-                  type="button"
-                  className="productos-card-btn-eliminar"
-                  aria-label="Eliminar producto"
-                  onClick={() => eliminarProductoLocal(item.id)}
-                >
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 6h2v9h-2V9zm4 0h2v9h-2V9zM7 9h2v9H7V9z" />
-                  </svg>
-                </button>
+                {isLoggedIn ? (
+                  <>
+                    <button
+                      type="button"
+                      className="productos-card-btn-editar"
+                      onClick={() => iniciarEdicion(item.raw)}
+                    >
+                      Editar
+                    </button>
+                    <button
+                      type="button"
+                      className="productos-card-btn-eliminar"
+                      aria-label="Eliminar producto"
+                      onClick={() => eliminarProductoLocal(item.id)}
+                    >
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M9 3h6l1 2h4v2H4V5h4l1-2zm1 6h2v9h-2V9zm4 0h2v9h-2V9zM7 9h2v9H7V9z" />
+                      </svg>
+                    </button>
+                  </>
+                ) : null}
               </div>
             </article>
           ))}

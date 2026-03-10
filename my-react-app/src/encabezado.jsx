@@ -6,9 +6,10 @@ import Tiktok from "./assets/redes/tik-tok.png";
 import Whatsapp from "./assets/redes/whatsapp.png";
 import Youtube from "./assets/redes/youtube.png";
 import Clima from "./Clima";
+import { useAuth } from "./AuthContext";
 
 function Encabezado({ seccionActiva, setSeccion }) {
-  const { isLoggingIn, user } = useContext(AuthContext);
+  const { isLoggedIn, logout } = useAuth();
   return (
     <header className="encabezado">
       <div className="logo">
@@ -23,16 +24,21 @@ function Encabezado({ seccionActiva, setSeccion }) {
           <li className={seccionActiva === "videos" ? "activo" : ""} onClick={() => setSeccion("videos")}>Vídeos</li>
           <li className={seccionActiva === "contacto" ? "activo" : ""} onClick={() => setSeccion("contacto")}>Contacto</li>
           <li className={seccionActiva === "sucursales" ? "activo" : ""} onClick={() => setSeccion("sucursales")}>Sucursales</li>
-          {isLoggingIn ? (
+          {isLoggedIn ? (
             <>
-          <li className={seccionActiva === "usuarios" ? "activo" : ""} onClick={() => setSeccion("usuarios")}>Usuarios</li>
-          <li>Cerrar Sesión</li>
-          </>)
-          (
-            <li onclick={}></li>
-          )
-          <li className={seccionActiva === "login" ? "activo" : ""} onClick={() => setSeccion("login")}>Login</li>
-          <li>Cerrar Sesión</li>
+              <li className={seccionActiva === "usuarios" ? "activo" : ""} onClick={() => setSeccion("usuarios")}>Usuarios</li>
+              <li
+                onClick={() => {
+                  logout();
+                  setSeccion("inicio");
+                }}
+              >
+                Cerrar Sesion
+              </li>
+            </>
+          ) : (
+            <li className={seccionActiva === "login" ? "activo" : ""} onClick={() => setSeccion("login")}>Login</li>
+          )}
         </ul>
       </nav>
       <div className="redes-clima">

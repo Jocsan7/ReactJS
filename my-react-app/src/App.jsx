@@ -4,6 +4,7 @@ import ContenedorTarjeta from "./ContenedorTarjeta";
 import PromosContenido from "./PromosContenido";
 import MapaGeneralXicotepec from "./MapaGeneralXicotepec";
 import PieComponente from "./PieComponente";
+import { AuthProvider } from "./AuthContext";
 import "./Carrito.css";
 import "./Inicio.css";
 import "./AcercaDe.css";
@@ -66,7 +67,7 @@ function App() {
       <Encabezado seccionActiva={seccion} setSeccion={cambiarSeccion} />
 
       <main className="app-main">
-        <ContenedorTarjeta seccion={seccion} contenido={contenido} />
+        <ContenedorTarjeta seccion={seccion} contenido={contenido} setSeccion={cambiarSeccion} />
 
         {seccion === "inicio" && <PromosContenido fondo={Fondo} />}
         {seccion === "inicio" && <MapaGeneralXicotepec />}

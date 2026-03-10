@@ -12,7 +12,7 @@ const capitalizarInicio = (valor) => {
     .replace(/\b\w/g, (letra) => letra.toUpperCase());
 };
 
-function Usuarios({ panelVisible }) {
+function Usuarios({ panelVisible, onRegistroExitoso }) {
   const [usuarios, setUsuarios] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState("");
@@ -74,7 +74,10 @@ function Usuarios({ panelVisible }) {
       <RegistrarUsuarios
         usuarioEditado={usuarioEditado}
         limpiarSeleccion={() => setUsuarioEditado(null)}
-        onRegistroExitoso={agregarUsuarioLocal}
+        onRegistroExitoso={(nuevoUsuario) => {
+          agregarUsuarioLocal(nuevoUsuario);
+          onRegistroExitoso?.(nuevoUsuario);
+        }}
         onActualizacionExitosa={actualizarUsuarioLocal}
       />
 
