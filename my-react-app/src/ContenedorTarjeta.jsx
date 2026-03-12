@@ -11,6 +11,7 @@ import Usuarios from "./Usuarios";
 import Carrito from "./Carrito";
 import Productos from "./Productos";
 import Login from "./Login";
+import Categorias from "./categorias";
 import { useAuth } from "./AuthContext";
 import "./ContenedorTarjeta.css";
 
@@ -69,6 +70,10 @@ function ContenedorTarjeta({ seccion, contenido, setSeccion }) {
       titulo: "Usuarios",
       subtitulo: "Lista de usuarios"
     },
+    categorias: {
+      titulo: "Categorias",
+      subtitulo: "Explora las categorias disponibles del menu"
+    },
     login: {
       titulo: "Login",
       subtitulo: "Accede a tu cuenta o crea una nueva"
@@ -116,7 +121,7 @@ function ContenedorTarjeta({ seccion, contenido, setSeccion }) {
   const items = datosSeccion;
 
   const clases = `contenedor-tarjetas seccion-${seccion} ${
-    ["productos", "galeria"].includes(seccion) ? "grid-5" : ""
+    ["productos", "galeria", "categorias"].includes(seccion) ? "grid-5" : ""
   } ${seccion === "sucursales" ? "grid-2" : ""}`;
 
   if (seccion === "sucursales") {
@@ -406,6 +411,50 @@ function ContenedorTarjeta({ seccion, contenido, setSeccion }) {
           <span className="hud-corner hud-br" />
         </div>
         <Login onLoginSuccess={() => setSeccion("inicio")} />
+      </section>
+    );
+  }
+
+  if (seccion === "categorias") {
+    if (!isLoggedIn) {
+      return (
+        <section
+          ref={panelRef}
+          className={`seccion-panel seccion-panel-login ${panelVisible ? "is-visible" : ""}`}
+        >
+          <div className="seccion-panel-encabezado">
+            <h2>Acceso requerido</h2>
+            <p>Inicia sesion para ver las categorias.</p>
+          </div>
+          <div className="panel-hud" aria-hidden="true">
+            <span className="hud-corner hud-tl" />
+            <span className="hud-corner hud-tr" />
+            <span className="hud-corner hud-bl" />
+            <span className="hud-corner hud-br" />
+          </div>
+          <Login onLoginSuccess={() => setSeccion("inicio")} />
+        </section>
+      );
+    }
+
+    return (
+      <section
+        ref={panelRef}
+        className={`seccion-panel seccion-panel-${seccion} ${panelVisible ? "is-visible" : ""}`}
+      >
+        {encabezadoActual && (
+          <div className="seccion-panel-encabezado">
+            <h2>{encabezadoActual.titulo}</h2>
+            <p>{encabezadoActual.subtitulo}</p>
+          </div>
+        )}
+        <div className="panel-hud" aria-hidden="true">
+          <span className="hud-corner hud-tl" />
+          <span className="hud-corner hud-tr" />
+          <span className="hud-corner hud-bl" />
+          <span className="hud-corner hud-br" />
+        </div>
+        <Categorias />
       </section>
     );
   }

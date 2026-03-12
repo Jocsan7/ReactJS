@@ -36,7 +36,8 @@ function App() {
     usuarios: [],
     login: [],
     carrito: [],
-    sucursales
+    sucursales,
+    categorias: []
   };
 
   const cambiarSeccion = (siguienteSeccion) => {

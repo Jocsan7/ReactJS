@@ -27,6 +27,7 @@ function Encabezado({ seccionActiva, setSeccion }) {
           {isLoggedIn ? (
             <>
               <li className={seccionActiva === "usuarios" ? "activo" : ""} onClick={() => setSeccion("usuarios")}>Usuarios</li>
+              <li className={seccionActiva === "categorias" ? "activo" : ""} onClick={() => setSeccion("categorias")}>Categorias</li>
               <li
                 onClick={() => {
                   logout();
